@@ -19,7 +19,7 @@
                             <p><b>Quantidade:</b> 1 unidade.</p>
                             <div class="mt-3">
                                 <button class="btn btn-primary me-2 w-100"> <i class="fas fa-shopping-cart"></i> Comprar</button> 
-                                <button class="btn btn-secondary w-100"> <i class="fas fa-plus-circle"></i> Adicionar ao Carrinho</button> 
+                                <button @click="addToCart" class="btn btn-secondary w-100"> <i class="fas fa-plus-circle"></i> Adicionar ao Carrinho</button> 
                             </div>
                         </div>
                         <div class="col-md-6 text-center">
@@ -36,12 +36,28 @@
                 </div>
             </div>
         </div>
+        <div v-if="showToast" class="toast-message">
+            Adicionado ao carrinho!
+        </div>
     </section>
 </template>
 
 <script>
 export default {
-    name: "ProductSection"
+    name: "ProductSection",
+    data() {
+        return {
+            showToast: false, // controla a visibilidade da mensagem
+        };
+    },
+    methods: {
+        addToCart() {
+            this.showToast = true; // Exibe a mensagem
+            setTimeout(() => {
+                this.showToast = false; // Oculta a mensagem após 3 segundos
+            }, 3000);
+        }
+    }
 };
 </script>
 
@@ -127,6 +143,25 @@ button {
 button:hover {
     background-color: #741736;
     color: white;
+}
+
+.toast-message {
+    position: fixed;
+    bottom: 20px;
+    right: 50px;
+    background-color: #dd506a;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: fadeInOut 3s;
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0; transform: translateY(100%); }
+    10% { opacity: 1; transform: translateY(0); }
+    90% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(100%); }
 }
 </style>
 

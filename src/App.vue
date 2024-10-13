@@ -1,19 +1,36 @@
 <template>
   <div id="app">
-    <Navbar /> 
-    <router-view /> 
+    <HeaderComponent />
+    <HeroComponent />
+    <ProductSection />
+    <FooterComponent />
   </div>
 </template>
 
-<script setup>
-import Navbar from './components/Navbar.vue'; 
+<script>
+import HeaderComponent from "./components/HeaderComponent.vue";
+import HeroComponent from "./components/HeroComponent.vue";
+import ProductSection from "./components/ProductSection.vue";
+import FooterComponent from "./components/FooterComponent.vue";
+
+export default {
+  name: "App",
+  components: {
+    HeaderComponent,
+    HeroComponent,
+    ProductSection,
+    FooterComponent
+  }
+};
 </script>
 
 <style>
-#app {
-  font-family: 'Poppins', sans-serif; 
-  text-align: center; 
-  color: #474544;
-  margin: 0; 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f4d4d8;
+  margin: 0;
+  padding: 0;
 }
 </style>

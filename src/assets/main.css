@@ -2,16 +2,33 @@
 
 body {
   font-family: 'Poppins', sans-serif;
-  background-color: #F6F6F6;
+  background-color: #ffded9;
   margin: 0;
   padding: 0;
   color: #474544;
 }
 
-h1, h2 {
-  font-family: 'Inria Serif', serif;
+#app {
+  background-color: #ffded9;
 }
 
-button {
-  font-family: 'Codec Pro', monospace;
+h1, h2 {
+  font-family: "Crimson Text", serif;
+  text-align: left;
+
+}
+
+@media (max-width: 768px) {
+  .products {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero {
+    padding: 30px;
+  }
 }

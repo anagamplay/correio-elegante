@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Inria+Serif&family=Poppins:wght@400;600&family=Codec+Pro&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #F6F6F6;
+  margin: 0;
+  padding: 0;
+  color: #474544;
+}
+
+h1, h2 {
+  font-family: 'Inria Serif', serif;
+}
+
+button {
+  font-family: 'Codec Pro', monospace;
+}

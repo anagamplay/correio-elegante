@@ -149,7 +149,7 @@ button:hover {
     position: fixed;
     bottom: 20px;
     right: 50px;
-    background-color: #dd506a;
+    background-color: #9a1b36;
     color: white;
     padding: 10px 20px;
     border-radius: 5px;

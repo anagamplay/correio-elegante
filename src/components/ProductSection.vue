@@ -1,3 +1,43 @@
+<script>
+import cart from '../cart/cart'; 
+
+export default {
+    name: "ProductSection",
+    data() {
+        return {
+            showToast: false,
+            selectedFlavor: 'tradicional',
+        };
+    },
+    methods: {
+        addToCart() {
+            const item = { 
+                id: `maca-${this.selectedFlavor}`,
+                name: `Maçã do Amor - ${this.selectedFlavor.charAt(0).toUpperCase() + this.selectedFlavor.slice(1)}`, 
+                price: 5.00 
+            };
+            cart.addItem(item);
+            this.showToast = true;
+            setTimeout(() => {
+                this.showToast = false;
+            }, 3000);
+        },
+        addElegantMail() {
+            const item = { 
+                id: 'correio-elegante',
+                name: "Correio Elegante", 
+                price: 2.50 
+            };
+            cart.addItem(item);
+            this.showToast = true;
+            setTimeout(() => {
+                this.showToast = false;
+            }, 3000);
+        }
+    }
+};
+</script>
+
 <template>
     <section class="container products">
         <div class="row">
@@ -8,17 +48,16 @@
                             <h2>Maçã do Amor</h2>
                             <p class="price">Escolha o sabor:</p>
                             <div class="form-check">
-                                <input class="form-check-input radio-button" type="radio" id="tradicional" name="sabor" value="tradicional" checked />
+                                <input class="form-check-input radio-button" type="radio" id="tradicional" name="sabor" value="tradicional" v-model="selectedFlavor" checked />
                                 <label class="form-check-label" for="tradicional">Tradicional - R$ 5,00</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input radio-button" type="radio" id="chocolate" name="sabor" value="chocolate" />
+                                <input class="form-check-input radio-button" type="radio" id="chocolate" name="sabor" value="chocolate" v-model="selectedFlavor" />
                                 <label class="form-check-label" for="chocolate">De Chocolate - R$ 5,00</label>
                             </div>
                             <p></p>
                             <p><b>Quantidade:</b> 1 unidade.</p>
                             <div class="mt-3">
-                                <button class="btn btn-primary me-2 w-100"> <i class="fas fa-shopping-cart"></i> Comprar</button> 
                                 <button @click="addToCart" class="btn btn-secondary w-100"> <i class="fas fa-plus-circle"></i> Adicionar ao Carrinho</button> 
                             </div>
                         </div>
@@ -32,7 +71,7 @@
                 <div class="product">
                     <h2>Correio Elegante</h2>
                     <p class="price">R$ 2,50</p>
-                    <button class="btn btn-primary w-100"> <i class="fas fa-shopping-cart"></i> Comprar</button>
+                    <button @click="addElegantMail" class="btn btn-secondary w-100"> <i class="fas fa-plus-circle"></i> Adicionar ao Carrinho</button>
                 </div>
             </div>
         </div>
@@ -41,25 +80,6 @@
         </div>
     </section>
 </template>
-
-<script>
-export default {
-    name: "ProductSection",
-    data() {
-        return {
-            showToast: false, // controla a visibilidade da mensagem
-        };
-    },
-    methods: {
-        addToCart() {
-            this.showToast = true; // Exibe a mensagem
-            setTimeout(() => {
-                this.showToast = false; // Oculta a mensagem após 3 segundos
-            }, 3000);
-        }
-    }
-};
-</script>
 
 <style scoped>
 .products {
@@ -78,7 +98,8 @@ h2 {
     margin-bottom: 20px;
 }
 
-.form-check, .form-check-label{
+.form-check,
+.form-check-label {
     margin: 0;
     padding: 0;
 }
@@ -100,7 +121,7 @@ label {
 }
 
 .form-check-input {
-    position: absolute; 
+    position: absolute;
     opacity: 0;
 }
 
@@ -113,20 +134,20 @@ label {
     display: inline-block;
     width: 20px;
     height: 20px;
-    border: 1px solid #474544; 
+    border: 1px solid #474544;
     border-radius: 50%;
-    margin-right: 10px; 
+    margin-right: 10px;
     vertical-align: middle;
     transition: background-color 0.3s;
     background-color: white;
 }
 
-.form-check-input:checked + .form-check-label::before {
-    background-color: #741736; 
-    border: 2px solid #741736; 
+.form-check-input:checked+.form-check-label::before {
+    background-color: #741736;
+    border: 2px solid #741736;
 }
 
-.form-check-input:hover + .form-check-label::before {
+.form-check-input:hover+.form-check-label::before {
     border-color: #474544;
 }
 
@@ -158,10 +179,24 @@ button:hover {
 }
 
 @keyframes fadeInOut {
-    0% { opacity: 0; transform: translateY(100%); }
-    10% { opacity: 1; transform: translateY(0); }
-    90% { opacity: 1; transform: translateY(0); }
-    100% { opacity: 0; transform: translateY(100%); }
+    0% {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+
+    10% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    90% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(100%);
+    }
 }
 </style>
-
